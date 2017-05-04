@@ -44,6 +44,15 @@ android中使用opengl绘制，需要一个view作为容器。可以使用GLSurf
 
 OpenGL在手机的坐标如图<br>
 ![](https://github.com/Jaelyn5526/AndroidOpenGL20/blob/master/image/openglcoord.png)<br>
+设置三角形的三个顶点坐标为
+```java
+// 数组中每个顶点的坐标数
+private float[] anlgePoint = new float[]{
+            0, 0.7f,
+            -0.6f, -0.6f,
+            0.6f, -0.6f
+        };
+```
 
 绘制的流程如下图<br>
 ![](https://github.com/Jaelyn5526/AndroidOpenGL20/blob/master/image/openglRenderer.png)<br>
