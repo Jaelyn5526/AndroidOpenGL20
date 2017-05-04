@@ -168,3 +168,28 @@ ptr: 顶点缓存数据；
 ```
 
 ##### 3.7 绘制 #####
+
+绘制元素<br>
+```java
+ GLES20.glDrawElements(GLES20.GL_TRIANGLES,index.length, GLES20.GL_UNSIGNED_SHORT,indexBuffer);
+```
+
+整体绘制<br>
+```java
+ GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, anlgePoint.length / 2);
+```
+glDrawArrays(int mode, int first, int count)方法详见http://blog.csdn.net/qq_31530015/article/details/52108220<br>
+mode的参数可以选择
+- GL_POINTS ————绘制独立的点
+ - GL_LINE_STRIP————绘制连续的线段,不封闭
+ - GL_LINE_LOOP————绘制连续的线段,封闭
+ - GL_LINES————顶点两两连接，为多条线段构成
+ - GL_TRIANGLES————每隔三个顶点构成一个三角形
+ - GL_TRIANGLE_STRIP————每相邻三个顶点组成一个三角形
+ - GL_TRIANGLE_FAN————以一个点为三角形公共顶点，组成一系列相邻的三角形
+
+#### 3.8 禁用句柄 ####
+```java
+            // 禁用指向三角形的顶点数组
+            GLES20.glDisableVertexAttribArray(mPositionHandle);
+```
