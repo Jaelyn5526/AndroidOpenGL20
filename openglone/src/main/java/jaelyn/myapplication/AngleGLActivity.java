@@ -31,6 +31,7 @@ public class AngleGLActivity extends AppCompatActivity {
         glSurfaceView.setRenderer(new MyGLRender());
     }
 
+    
     public class MyGLRender implements GLSurfaceView.Renderer {
         private final String vertexShaderFileName = "angle_vertex.glsl";
         private final String fragmentShaderFileName = "angle_fragment.glsl";
