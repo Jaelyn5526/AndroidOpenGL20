@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/OpenGL20.iml" filepath="$PROJECT_DIR$/OpenGL20.iml" />
-      <module fileurl="file://$PROJECT_DIR$/openglone/openglone.iml" filepath="$PROJECT_DIR$/openglone/openglone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OpenglONE/openglone.iml" filepath="$PROJECT_DIR$/OpenglONE/openglone.iml" />
     </modules>
   </component>
 </project>
