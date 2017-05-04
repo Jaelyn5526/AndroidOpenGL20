@@ -18,3 +18,24 @@ android中使用opengl绘制，需要一个view作为容器。可以使用GLSurf
 <supports-gl-texture android:name="GL_OES_compressed_paletted_texture" />
 
 ### 绘制 ###
+
+一、创建使用容器
+```java
+@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        GLSurfaceView glSurfaceView = new GLSurfaceView(this);
+        //设置使用GL20
+        glSurfaceView.setEGLContextClientVersion(2);
+
+        //设置Renderer
+        glSurfaceView.setRenderer(new MyGLRender());
+        setContentView(glSurfaceView);
+    }
+```
+二、实现Render<br>
+
+新建MyRender实现 GLSurfaceView.Renderer接口，需要实现三个方法：onSurfaceCreated，onSurfaceChanged，onDrawFrame <br>
+1.onSurfaceCreated(GL10 gl10, EGLConfig eglConfig)   仅调用一次，用来设置OpenGL的环境。<br>
+2.onSurfaceChanged(GL10 gl10, int width, int height)  每次view大小改变时候调用。<br>
+3.onDrawFrame(GL10 gl10) 每次view被重绘的时候调用。<br>
