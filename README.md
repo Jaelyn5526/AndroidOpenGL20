@@ -33,8 +33,9 @@ android中使用opengl绘制，需要一个view作为容器。可以使用GLSurf
         setContentView(glSurfaceView);
     }
 ```
-二、实现Render
-新建MyRender实现 GLSurfaceView.Renderer接口，需要实现三个方法：onSurfaceCreated，onSurfaceChanged，onDrawFrame
-1.onSurfaceCreated(GL10 gl10, EGLConfig eglConfig)   仅调用一次，用来设置OpenGL的环境。
-2.onSurfaceChanged(GL10 gl10, int width, int height)  每次view大小改变时候调用。
-3.onDrawFrame(GL10 gl10) 每次view被重绘的时候调用。
+二、实现Render<br>
+
+新建MyRender实现 GLSurfaceView.Renderer接口，需要实现三个方法：onSurfaceCreated，onSurfaceChanged，onDrawFrame <br>
+1.onSurfaceCreated(GL10 gl10, EGLConfig eglConfig)   仅调用一次，用来设置OpenGL的环境。<br>
+2.onSurfaceChanged(GL10 gl10, int width, int height)  每次view大小改变时候调用。<br>
+3.onDrawFrame(GL10 gl10) 每次view被重绘的时候调用。<br>
