@@ -39,3 +39,14 @@ android中使用opengl绘制，需要一个view作为容器。可以使用GLSurf
 1.onSurfaceCreated(GL10 gl10, EGLConfig eglConfig)   仅调用一次，用来设置OpenGL的环境。<br>
 2.onSurfaceChanged(GL10 gl10, int width, int height)  每次view大小改变时候调用。<br>
 3.onDrawFrame(GL10 gl10) 每次view被重绘的时候调用。<br>
+
+三、绘制三角形<br>
+绘制的流程如下图<br>
+![](AndroidOpenGL20/image/openglRenderer.png)
+
+
+
+
+
+
+
