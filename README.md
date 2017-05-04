@@ -42,7 +42,7 @@ android中使用opengl绘制，需要一个view作为容器。可以使用GLSurf
 
 三、绘制三角形<br>
 绘制的流程如下图<br>
-![](AndroidOpenGL20/image/openglRenderer.png)
+![](https://github.com/Jaelyn5526/AndroidOpenGL20/image/openglRenderer.png)
 
 
 
