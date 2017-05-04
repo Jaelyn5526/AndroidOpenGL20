@@ -22,13 +22,13 @@ public class AngleGLActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        GLSurfaceView glSurfaceView = (GLSurfaceView) findViewById(R.id.glsurfaceview);
+        GLSurfaceView glSurfaceView = new GLSurfaceView(this);
         //设置使用GL20
         glSurfaceView.setEGLContextClientVersion(2);
 
         //设置Renderer
         glSurfaceView.setRenderer(new MyGLRender());
+        setContentView(glSurfaceView);
     }
 
 
