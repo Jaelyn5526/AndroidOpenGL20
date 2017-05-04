@@ -42,6 +42,9 @@ android中使用opengl绘制，需要一个view作为容器。可以使用GLSurf
 
 三、绘制三角形<br>
 
+OpenGL在手机的坐标如图<br>
+![](https://github.com/Jaelyn5526/AndroidOpenGL20/blob/master/image/openglcoord.png)<br>
+
 绘制的流程如下图<br>
 ![](https://github.com/Jaelyn5526/AndroidOpenGL20/blob/master/image/openglRenderer.png)<br>
 
@@ -106,11 +109,11 @@ public int loadShader(int type, String shaderCode){
 
 ##### 1.3获取position、Color句柄 #####
 ```java
-            // 获取指向vertex shader的成员vPosition的 handle
-            mPositionHandle = GLES20.glGetAttribLocation(program, "vPosition");
+// 获取指向vertex shader的成员vPosition的 handle
+mPositionHandle = GLES20.glGetAttribLocation(program, "vPosition");
 
-            // 获取指向fragment shader的成员vColor的handle
-            mColorHandle = GLES20.glGetUniformLocation(program, "vColor");
+// 获取指向fragment shader的成员vColor的handle
+mColorHandle = GLES20.glGetUniformLocation(program, "vColor");
 ```
 
 ##### 1.4 处理顶点数据 #####
@@ -127,18 +130,18 @@ GLES20.glViewport(0, 0, width, height);
 #### 3、onDrawFrame ####
 ##### 3.1 & 3.2 重置背景色、添加Program #####
 ```java
-            //重置背景颜色
-            GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
-            // 将program加入OpenGL ES环境中
-            GLES20.glUseProgram(program);
+//重置背景颜色
+GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
+// 将program加入OpenGL ES环境中
+GLES20.glUseProgram(program);
 ```
 
 ##### 3.3 准备顶点 #####
 ```java
-            // 启用一个指向三角形的顶点数组的handle
-            GLES20.glEnableVertexAttribArray(mPositionHandle);
-            // 准备三角形的坐标数据
-            GLES20.glVertexAttribPointer(mPositionHandle, 2, GLES20.GL_FLOAT, false, 0, vertexBuffer);
+// 启用一个指向三角形的顶点数组的handle
+GLES20.glEnableVertexAttribArray(mPositionHandle);
+// 准备三角形的坐标数据
+GLES20.glVertexAttribPointer(mPositionHandle, 2, GLES20.GL_FLOAT, false, 0, vertexBuffer);
 ```
 函数原型：<br>
 void glVertexAttribPointer (int index, int size, int type, boolean normalized, int stride, Buffer ptr )<br>
@@ -155,16 +158,16 @@ ptr: 顶点缓存数据；
 ##### 3.5 渲染纹理、颜色 #####
 填充颜色
 ```java
-            // 设置三角形的颜色
-            GLES20.glUniform4fv(mColorHandle, 1, color, 0);
+// 设置三角形的颜色
+GLES20.glUniform4fv(mColorHandle, 1, color, 0);
 ```
 
 根据贴图顶点填充颜色
 ```java
-        // 启用一个指向三角形的纹理顶点的handle
-        GLES20.glEnableVertexAttribArray(mColorHandle);
-        // 准备纹理的坐标数据
-        GLES20.glVertexAttribPointer(mColorHandle, 2, GLES20.GL_FLOAT, false, 0, coordBuffer);
+// 启用一个指向三角形的纹理顶点的handle
+GLES20.glEnableVertexAttribArray(mColorHandle);
+// 准备纹理的坐标数据
+GLES20.glVertexAttribPointer(mColorHandle, 2, GLES20.GL_FLOAT, false, 0, coordBuffer);
 ```
 
 ##### 3.7 绘制 #####
@@ -190,6 +193,6 @@ mode的参数可以选择
 
 #### 3.8 禁用句柄 ####
 ```java
-            // 禁用指向三角形的顶点数组
-            GLES20.glDisableVertexAttribArray(mPositionHandle);
+ // 禁用指向三角形的顶点数组
+ GLES20.glDisableVertexAttribArray(mPositionHandle);
 ```
