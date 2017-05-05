@@ -3,6 +3,7 @@ package jaelyn.myapplication;
 import android.content.Context;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
+import android.opengl.Matrix;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -30,7 +31,6 @@ public class AngleGLMatrixActivity extends AppCompatActivity {
         GLSurfaceView glSurfaceView = new GLSurfaceView(this);
         //设置使用GL20
         glSurfaceView.setEGLContextClientVersion(2);
-
         //设置Renderer
         glSurfaceView.setRenderer(new MyGLRender());
         setContentView(glSurfaceView);
@@ -38,7 +38,7 @@ public class AngleGLMatrixActivity extends AppCompatActivity {
 
 
     public class MyGLRender implements GLSurfaceView.Renderer {
-        private final String vertexShaderFileName = "angle_vertex.glsl";
+        private final String vertexShaderFileName = "angle_matrix_vertex.glsl";
         private final String fragmentShaderFileName = "angle_fragment.glsl";
 
         private int VertexShader;
@@ -58,6 +58,11 @@ public class AngleGLMatrixActivity extends AppCompatActivity {
         private FloatBuffer vertexBuffer;
         private int mPositionHandle;
         private int mColorHandle;
+        private int mMatrixHandle;
+
+        public float[] mViewMatrix = new float[16];
+        public float[] mProjectMatrix = new float[16];
+        public float[] matrix = new float[16];
 
         @Override
         public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
@@ -74,12 +79,24 @@ public class AngleGLMatrixActivity extends AppCompatActivity {
 
             // 获取指向fragment shader的成员vColor的handle
             mColorHandle = GLES20.glGetUniformLocation(program, "vColor");
+
+            // 获取指向vertex shader的成员vMatrix的handle
+            mMatrixHandle = GLES20.glGetUniformLocation(program, "vMatrix");
         }
 
         @Override
         public void onSurfaceChanged(GL10 gl10, int width, int height) {
             //设置渲染窗口的大小
             GLES20.glViewport(0, 0, width, height);
+
+            //计算宽高比
+            float ratio = (float) width / height;
+            //设置透视投影
+            Matrix.frustumM(mProjectMatrix, 0, -ratio, ratio, -1, 1, 3, 20);
+            //设置相机位置
+            Matrix.setLookAtM(mViewMatrix, 0, 0f, 0f, 3.0f, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
+            //计算变换矩阵
+            Matrix.multiplyMM(matrix, 0, mProjectMatrix, 0, mViewMatrix, 0);
         }
 
         @Override
@@ -89,6 +106,9 @@ public class AngleGLMatrixActivity extends AppCompatActivity {
 
             // 将program加入OpenGL ES环境中
             GLES20.glUseProgram(program);
+
+            //指定vMatrix的值
+            GLES20.glUniformMatrix4fv(mMatrixHandle, 1, false, matrix, 0);
 
             // 启用一个指向三角形的顶点数组的handle
             GLES20.glEnableVertexAttribArray(mPositionHandle);
