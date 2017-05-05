@@ -41,7 +41,7 @@ android中使用opengl绘制，需要一个view作为容器。可以使用GLSurf
 3.onDrawFrame(GL10 gl10) 每次view被重绘的时候调用。<br>
 
 三、绘制三角形<br>
-
+参考项目中 AngleGLActivity；
 OpenGL在手机的坐标如图<br>
 ![](https://github.com/Jaelyn5526/AndroidOpenGL20/blob/master/image/openglcoord.png)<br>
 设置三角形的三个顶点坐标为
