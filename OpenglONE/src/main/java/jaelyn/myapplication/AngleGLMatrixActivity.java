@@ -3,8 +3,8 @@ package jaelyn.myapplication;
 import android.content.Context;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,10 +18,11 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 /**
- * OpenGLES
- * 实现画一个三角形
+ * 绘制三角形
+ * 设定视角，长宽比例。
+ * 使得横竖屏切换的时候 三角形不会变形。
  */
-public class AngleGLActivity extends AppCompatActivity {
+public class AngleGLMatrixActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,8 +108,8 @@ public class AngleGLActivity extends AppCompatActivity {
         }
 
         private void createProgram(){
-            VertexShader = loadShader(GLES20.GL_VERTEX_SHADER, loadGLSL(AngleGLActivity.this, vertexShaderFileName));
-            FragmentShader = loadShader(GLES20.GL_FRAGMENT_SHADER, loadGLSL(AngleGLActivity.this, fragmentShaderFileName));
+            VertexShader = loadShader(GLES20.GL_VERTEX_SHADER, loadGLSL(AngleGLMatrixActivity.this, vertexShaderFileName));
+            FragmentShader = loadShader(GLES20.GL_FRAGMENT_SHADER, loadGLSL(AngleGLMatrixActivity.this, fragmentShaderFileName));
 
             // 创建一个空的OpenGL ES Program
             program = GLES20.glCreateProgram();
