@@ -43,13 +43,33 @@ Matrix.setLookAtM(mViewMatrix, 0, 0f, 0f, 3.0f, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
 Matrix.multiplyMM(matrix, 0, mProjectMatrix, 0, mViewMatrix, 0);
 ```
 函数：<br>
-``java
+```java
 frustumM(float[] m, int offset, float left, float right, float bottom, float top, float near, float far)
 ```
-
 m:填充的矩阵，传一个16位的byte数组；
 offset: 一般传0；
 left，bottom, bottom, top: 单位坐标与对应屏幕的长宽，与GLES20.glViewport(0, 0, width, height)相关。<br>
         如left=-1; right = 1; bottom=-1; top = 1, 则表示：x轴上1个单位的实际像素距离为width/2;y轴上1个单位的实际像素距离为height/2。
 near: 摄像头最近的距离;
 far: 摄像头最远的距离；
+
+函数：<br>
+```java
+setLookAtM(float[] rm, int rmOffset, float eyeX, float eyeY, float eyeZ, float centerX, float centerY, float centerZ, float upX, float upY, float upZ) 
+```
+eyeX, eyeY, eyeZ: 相机的位置；其中当eyeZ=near时，物体处于没有缩放的状态；
+centerX, centerY, centerZ: 物体的位置；
+upX, upY, upZ: 相机的朝向，正视为0，1，0
+
+3.onDrawFrame中加入矩阵变换
+```java
+//指定vMatrix的值
+GLES20.glUniformMatrix4fv(mMatrixHandle, 1, false, matrix, 0);
+```
+
+### 平移 旋转 缩放 ###
+通过修改matrix的值来实现平移 旋转 缩放；
+Matrix.rotateM(float[] m, int mOffset, float a, float x, float y, float z)
+Matrix.translateM(float[] m, int mOffset, float x, float y, float z)
+Matrix.scaleM(float[] m, int mOffset, float x, float y, float z)
+
