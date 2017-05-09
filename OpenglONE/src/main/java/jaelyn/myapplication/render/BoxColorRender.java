@@ -1,9 +1,7 @@
 package jaelyn.myapplication.render;
 
 import android.content.Context;
-import android.graphics.Region;
 import android.opengl.GLES20;
-import android.opengl.Matrix;
 
 import java.nio.FloatBuffer;
 
@@ -42,14 +40,12 @@ public class BoxColorRender extends BaseRender{
             -1f, 1f, -1f, // 5
             1f, 1f, -1f,  //8
 
-
             -1f, 1f, 1f, // 1
             -1f, 1f, -1f, // 5
             -1f, -1f, -1f,  //6
             -1f, 1f, 1f, // 1
             -1f, -1f, 1f,  //3
             -1f, -1f, -1f,  //6
-
 
             1f, -1f, -1f,  //7
             1f, 1f, -1f,  //8
@@ -71,7 +67,6 @@ public class BoxColorRender extends BaseRender{
             1f, -1f, -1f,  //7
             -1f, -1f, -1f,  //6
             -1f, -1f, 1f,  //3
-
     };
 
     // 设置颜色，分别为red, green, blue 和alpha (opacity)
@@ -201,7 +196,6 @@ public class BoxColorRender extends BaseRender{
 
         // 禁用指向立方体的顶点数组
         GLES20.glDisableVertexAttribArray(mPositionHandle);
-
     }
 
     private void createProgram(){
@@ -217,6 +211,5 @@ public class BoxColorRender extends BaseRender{
         // 创建可执行的 OpenGL ES program
         GLES20.glLinkProgram(program);
     }
-
 
 }
