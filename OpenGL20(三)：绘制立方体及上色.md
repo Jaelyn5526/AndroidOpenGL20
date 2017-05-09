@@ -7,7 +7,7 @@ BoxColorRender & BoxColorRender2分别用两种方法实现了绘制立方体。
 使用的绘制方法为：<br>
 GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, boxPoint.length / 3);<br>
 与前两个示例一样，依次罗列立方体的各个顶点。将立方体的面分割为三角形，将组成三角形的各个顶点一次罗列。<br>
-根据上图的，将立方体分为三角形如果：0，1，2 组成一个三角形，这样就得到了立方体的坐标参数：<br>
+根据上图的，将立方体分为三角形如果：0，1，3 组成一个三角形，这样就得到了立方体的坐标参数：<br>
 ```java
     // 数组中每个顶点的坐标数
     private float[] boxPoint = new float[]{
