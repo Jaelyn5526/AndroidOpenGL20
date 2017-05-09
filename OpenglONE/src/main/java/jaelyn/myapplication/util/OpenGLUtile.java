@@ -2,6 +2,11 @@ package jaelyn.myapplication.util;
 
 import android.opengl.GLES20;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
+import java.nio.ShortBuffer;
+
 /**
  * Created by zaric on 17-05-04.
  */
@@ -34,4 +39,38 @@ public class OpenGLUtile {
         }
         return shader;
     }
+
+    /**
+     * 将 float[] 转成 FloatBuffer
+     * @param data
+     * @return
+     */
+    public static FloatBuffer setFloatBuffer(float[] data){
+        FloatBuffer fb;
+        // 为存放形状的坐标，初始化顶点字节缓冲
+        ByteBuffer bb = ByteBuffer.allocateDirect(
+                // (坐标数 * 4)float占四字节
+                data.length * 4);
+        // 设用设备的本点字节序
+        bb.order(ByteOrder.nativeOrder());
+
+        // 从ByteBuffer创建一个浮点缓冲
+        fb = bb.asFloatBuffer();
+        // 把坐标们加入FloatBuffer中
+        fb.put(data);
+        // 设置buffer，从第一个坐标开始读
+        fb.position(0);
+        return fb;
+    }
+
+    public static ShortBuffer setShortBuffer(short[] data){
+        ShortBuffer sb;
+        ByteBuffer bb = ByteBuffer.allocateDirect(data.length * 2);
+        bb.order(ByteOrder.nativeOrder());
+        sb = bb.asShortBuffer();
+        sb.put(data);
+        sb.position(0);
+        return sb;
+    }
+
 }
