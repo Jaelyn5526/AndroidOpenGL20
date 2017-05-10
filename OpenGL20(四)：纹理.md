@@ -196,12 +196,12 @@ Image2DRender文件中写的是如果贴一张2D图形到一个立方体上。<b
             0,1,
             1,1,
     };
-    ```
+ ```
 
 #### 一张图贴满立方体 ####
 将下图贴裁剪到立方体的每个面上<br>
 ![](https://github.com/Jaelyn5526/AndroidOpenGL20/blob/master/OpenglONE/src/main/res/mipmap-xhdpi/box.png)<br>
-![效果图](https://github.com/Jaelyn5526/AndroidOpenGL20/blob/master/image/box_image_2.gif)<br>
+![](https://github.com/Jaelyn5526/AndroidOpenGL20/blob/master/image/box_image_2.gif)<br>
 ```java
 //将一张图 裁剪贴在所有面
     float texCoorTwo[] = {
@@ -247,7 +247,7 @@ Image2DRender文件中写的是如果贴一张2D图形到一个立方体上。<b
             0.4f, 0.4f,  //3
             0.2f, 0.4f,  //2
     };
-    ```
+ ```
 
 
 
