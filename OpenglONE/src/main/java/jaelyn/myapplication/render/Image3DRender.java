@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.opengl.GLES20;
+import android.opengl.GLSurfaceView;
 import android.opengl.GLUtils;
 
 import java.nio.FloatBuffer;
@@ -22,7 +23,7 @@ import jaelyn.myapplication.util.OpenGLUtile;
  * 实现贴图，将立方体的各个面贴上同一个纹理图。
  */
 
-public class Image3DRender extends BaseRender {
+public class Image3DRender implements GLSurfaceView.Renderer  {
     private final String vertexShaderFileName = "box_image_vertex.glsl";
     private final String fragmentShaderFileName = "box_image_fragment.glsl";
 
@@ -180,14 +181,15 @@ public class Image3DRender extends BaseRender {
     MatrixUtil matrixUtil;
     private int textureId;
 
-    public Image3DRender(Context context) {
+    public Image3DRender(Context context, int type) {
         this.context = context;
-
-       /* this.bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.circle3);
-        texCoor = texCoorOne;*/
-
-        this.bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.box);
-        texCoor = texCoorTwo;
+        if (type == 0){
+            this.bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.circle3);
+            texCoor = texCoorOne;
+        }else {
+            this.bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.box);
+            texCoor = texCoorTwo;
+        }
     }
 
     @Override

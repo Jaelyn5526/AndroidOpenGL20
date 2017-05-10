@@ -2,6 +2,7 @@ package jaelyn.myapplication.render;
 
 import android.content.Context;
 import android.opengl.GLES20;
+import android.opengl.GLSurfaceView;
 
 import java.nio.FloatBuffer;
 
@@ -16,7 +17,7 @@ import jaelyn.myapplication.util.OpenGLUtile;
  * Created by zaric on 17-05-05.
  */
 
-public class BoxColorRender extends BaseRender{
+public class BoxColorRender implements GLSurfaceView.Renderer {
     private final String vertexShaderFileName = "box_color_vertex.glsl";
     private final String fragmentShaderFileName = "box_color_fragment.glsl";
 

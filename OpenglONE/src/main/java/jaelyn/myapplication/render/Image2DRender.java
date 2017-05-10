@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.opengl.GLES20;
+import android.opengl.GLSurfaceView;
 import android.opengl.GLUtils;
 
 import java.nio.FloatBuffer;
@@ -20,7 +21,7 @@ import jaelyn.myapplication.util.OpenGLUtile;
  * Created by zaric on 17-05-05.
  */
 
-public class Image2DRender extends BaseRender {
+public class Image2DRender implements GLSurfaceView.Renderer {
     private final String vertexShaderFileName = "box_image_vertex.glsl";
     private final String fragmentShaderFileName = "box_image_fragment.glsl";
 
@@ -56,9 +57,9 @@ public class Image2DRender extends BaseRender {
     MatrixUtil matrixUtil;
     private int textureId;
 
-    public Image2DRender(Context context, Bitmap bitmap) {
+    public Image2DRender(Context context) {
         this.context = context;
-        this.bitmap = bitmap;
+        this.bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.circle3);
     }
 
     @Override

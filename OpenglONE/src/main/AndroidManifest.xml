@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".AngleGLMatrixActivity">
-
         </activity>
         <activity android:name=".AngleGLActivity">
         </activity>
@@ -23,6 +22,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".OpenGLActivity">
         </activity>
     </application>
 
