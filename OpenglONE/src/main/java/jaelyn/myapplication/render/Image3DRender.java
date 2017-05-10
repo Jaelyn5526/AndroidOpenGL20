@@ -183,7 +183,7 @@ public class Image3DRender extends BaseRender {
     public Image3DRender(Context context) {
         this.context = context;
 
-        /*this.bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.circle3);
+       /* this.bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.circle3);
         texCoor = texCoorOne;*/
 
         this.bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.box);
